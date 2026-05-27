@@ -57,8 +57,8 @@ export default function Login() {
           </form>
           <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-xl text-xs text-gray-500 dark:text-gray-400">
             <p className="font-medium mb-1">Default credentials:</p>
-            <p>📧 admin@gazipurkismat.org</p>
-            <p>🔑 Admin@123456</p>
+            <p>📧 admin@.org</p>
+            <p>🔑 Admin</p>
           </div>
         </div>
       </div>
