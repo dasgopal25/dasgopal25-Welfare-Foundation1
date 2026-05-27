@@ -1,0 +1,10 @@
+import axiosInstance from '../services/axiosInstance';
+export const getPublicBlogs = (params) => axiosInstance.get('/blogs', { params });
+export const getFeaturedBlogs = () => axiosInstance.get('/blogs/featured');
+export const getLatestBlogs = () => axiosInstance.get('/blogs/latest');
+export const getBlogBySlug = (slug) => axiosInstance.get(`/blogs/${slug}`);
+export const adminGetBlogs = (params) => axiosInstance.get('/admin/blogs', { params });
+export const adminGetBlog = (id) => axiosInstance.get(`/admin/blogs/${id}`);
+export const adminCreateBlog = (data) => axiosInstance.post('/admin/blogs', data, { headers: { 'Content-Type': 'multipart/form-data' } });
+export const adminUpdateBlog = (id, data) => axiosInstance.put(`/admin/blogs/${id}`, data, { headers: { 'Content-Type': 'multipart/form-data' } });
+export const adminDeleteBlog = (id) => axiosInstance.delete(`/admin/blogs/${id}`);

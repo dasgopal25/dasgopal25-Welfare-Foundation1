@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --forest: #1a4731;
+  --forest-light: #2d6a4f;
+  --gold: #c9a84c;
+  --navy: #1e3a5f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  @apply bg-white text-gray-800 dark:bg-gray-950 dark:text-gray-100;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.font-bangla { font-family: 'Hind Siliguri', sans-serif; }
+.font-display { font-family: 'Playfair Display', serif; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #1a4731; border-radius: 3px; }
+.dark ::-webkit-scrollbar-track { background: #1f2937; }
+.dark ::-webkit-scrollbar-thumb { background: #2d6a4f; }
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+
+.animate-fadeInUp { animation: fadeInUp 0.7s ease forwards; }
+.animate-fadeIn { animation: fadeIn 0.5s ease forwards; }
+.animate-slideInLeft { animation: slideInLeft 0.7s ease forwards; }
+
+/* Blog content styles */
+.blog-content h1, .blog-content h2, .blog-content h3 { 
+  @apply font-display font-bold text-forest dark:text-green-400 mb-3 mt-6;
+}
+.blog-content p { @apply mb-4 leading-relaxed; }
+.blog-content ul, .blog-content ol { @apply mb-4 pl-6; }
+.blog-content li { @apply mb-1; }
+.blog-content img { @apply rounded-xl my-6 w-full object-cover; }
+.blog-content blockquote { 
+  @apply border-l-4 border-gold pl-4 italic my-6 text-gray-600 dark:text-gray-400;
+}
+
+/* WhatsApp button */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  width: 56px;
+  height: 56px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.whatsapp-btn:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37, 211, 102, 0.5); }
