@@ -29,11 +29,11 @@ const seedAdmin = async () => {
       { key: 'hero_subtitle', value: 'Gazipur Kismat Welfare Foundation helps people through social service and human welfare activities.', group: 'hero' },
       { key: 'hero_subtitle_bn', value: 'গাজীপুর কিসমত ওয়েলফেয়ার ফাউন্ডেশন সামাজিক সেবা ও মানব কল্যাণ কার্যক্রমের মাধ্যমে মানুষকে সাহায্য করে।', group: 'hero' },
       { key: 'address', value: 'Gazipur Kismat, Dantan, Paschim Medinipur, 721426', group: 'contact' },
-      { key: 'email', value: 'info@gazipurkismat.org', group: 'contact' },
-      { key: 'phone', value: '+91 00000 00000', group: 'contact' },
+      { key: 'email', value: 'welfarefoundationgazipurkismat@gmail.com', group: 'contact' },
+      { key: 'phone', value: '+91 9002036590', group: 'contact' },
       { key: 'established_year', value: '2026', group: 'general' },
       { key: 'facebook_url', value: '#', group: 'social' },
-      { key: 'whatsapp_number', value: '910000000000', group: 'social' },
+      { key: 'whatsapp_number', value: '+91 9002036590', group: 'social' },
     ];
 
     for (const setting of defaultSettings) {

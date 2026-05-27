@@ -34,8 +34,8 @@ export default function Footer() {
         <div>
           <h4 className="font-display font-semibold text-gold mb-4">{t('Contact', 'যোগাযোগ')}</h4>
           <div className="space-y-2 text-sm text-green-100">
-            <p>📧 info@gazipurkismat.org</p>
-            <p>📞 +91 00000 00000</p>
+            <p>📧 welfarefoundationgazipurkismat@gmail.com</p>
+            <p>📞 +91 9002036590</p>
           </div>
           <div className="flex gap-3 mt-6">
             <a href="#" className="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center hover:bg-gold transition-colors text-sm">f</a>

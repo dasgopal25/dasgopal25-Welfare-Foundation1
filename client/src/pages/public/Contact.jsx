@@ -19,8 +19,8 @@ export default function Contact() {
             <div className="space-y-5">
               {[
                 ['📍', t('Address', 'ঠিকানা'), 'Gazipur Kismat, Dantan, Paschim Medinipur, West Bengal - 721426'],
-                ['📧', t('Email', 'ইমেইল'), 'info@gazipurkismat.org'],
-                ['📞', t('Phone', 'ফোন'), '+91 00000 00000'],
+                ['📧', t('Email', 'ইমেইল'), 'welfarefoundationgazipurkismat@gmail.com'],
+                ['📞', t('Phone', 'ফোন'), '+91 9002036590'],
                 ['🕐', t('Office Hours', 'অফিসের সময়'), t('Mon–Sat: 9AM – 6PM', 'সোম–শনি: সকাল ৯টা – বিকেল ৬টা')],
               ].map(([icon, label, value]) => (
                 <div key={label} className="flex gap-4">
