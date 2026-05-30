@@ -26,39 +26,79 @@ export default function Login() {
     }
   };
 
+  const inputStyle = {
+    width: '100%',
+    padding: '0.75rem 1rem',
+    borderRadius: '0.75rem',
+    border: '1px solid color-mix(in srgb, var(--c-primary) 25%, transparent)',
+    backgroundColor: 'var(--c-bg-alt)',
+    color: 'var(--c-text)',
+    fontSize: 'var(--font-size-base)',
+    outline: 'none',
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-forest-dark via-forest to-navy flex items-center justify-center px-4">
+    <div className="min-h-screen flex items-center justify-center px-4 theme-hero-bg">
       <div className="w-full max-w-md">
+        {/* Logo */}
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl">
+          <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl"
+            style={{ backgroundColor: 'var(--c-accent)' }}>
             <span className="text-white font-display font-bold text-2xl">G</span>
           </div>
           <h1 className="font-display text-2xl font-bold text-white">Admin Panel</h1>
-          <p className="text-green-200 text-sm mt-1">Gazipur Kismat Welfare Foundation</p>
+          <p className="text-white/60 text-sm mt-1">Gazipur Kismat Welfare Foundation</p>
         </div>
-        <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-2xl">
-          <h2 className="font-display text-xl font-bold text-forest dark:text-green-400 mb-6">Sign In</h2>
-          {error && <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 rounded-xl text-sm">{error}</div>}
+
+        {/* Card */}
+        <div className="rounded-2xl p-8 shadow-2xl" style={{ backgroundColor: 'var(--c-bg)' }}>
+          <h2 className="font-display text-xl font-bold mb-6" style={{ color: 'var(--c-primary)' }}>Sign In</h2>
+
+          {error && (
+            <div className="mb-4 p-3 rounded-xl text-sm" style={{ backgroundColor: 'rgba(239,68,68,0.1)', color: '#dc2626', border: '1px solid rgba(239,68,68,0.2)' }}>
+              {error}
+            </div>
+          )}
+
           <form onSubmit={submit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
-              <input type="email" value={form.email} onChange={e => setForm(p => ({...p, email: e.target.value}))} required
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-forest/30 focus:border-forest transition" />
+              <label className="block text-sm font-medium mb-1" style={{ color: 'var(--c-text-muted)' }}>Email</label>
+              <input
+                type="email"
+                value={form.email}
+                onChange={e => setForm(p => ({ ...p, email: e.target.value }))}
+                required
+                style={inputStyle}
+                onFocus={e => e.target.style.boxShadow = '0 0 0 3px color-mix(in srgb, var(--c-primary) 25%, transparent)'}
+                onBlur={e => e.target.style.boxShadow = 'none'}
+              />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Password</label>
-              <input type="password" value={form.password} onChange={e => setForm(p => ({...p, password: e.target.value}))} required
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-forest/30 focus:border-forest transition" />
+              <label className="block text-sm font-medium mb-1" style={{ color: 'var(--c-text-muted)' }}>Password</label>
+              <input
+                type="password"
+                value={form.password}
+                onChange={e => setForm(p => ({ ...p, password: e.target.value }))}
+                required
+                style={inputStyle}
+                onFocus={e => e.target.style.boxShadow = '0 0 0 3px color-mix(in srgb, var(--c-primary) 25%, transparent)'}
+                onBlur={e => e.target.style.boxShadow = 'none'}
+              />
             </div>
-            <button type="submit" disabled={loading}
-              className="w-full py-3.5 bg-forest hover:bg-forest-light text-white font-semibold rounded-xl transition-colors disabled:opacity-60 mt-2">
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full py-3.5 rounded-xl font-semibold text-white transition-all hover:opacity-90 disabled:opacity-60 mt-2"
+              style={{ backgroundColor: 'var(--c-primary)' }}
+            >
               {loading ? 'Signing in...' : 'Sign In'}
             </button>
           </form>
-          <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-xl text-xs text-gray-500 dark:text-gray-400">
+
+          <div className="mt-6 p-4 rounded-xl text-xs" style={{ backgroundColor: 'var(--c-bg-alt)', color: 'var(--c-text-muted)' }}>
             <p className="font-medium mb-1">Default credentials:</p>
-            <p>📧 admin@.org</p>
-            <p>🔑 Admin</p>
+            <p>📧 admin@gazipurkismat.org</p>
+            <p>🔑 Admin@123456</p>
           </div>
         </div>
       </div>

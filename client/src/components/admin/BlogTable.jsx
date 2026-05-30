@@ -10,31 +10,61 @@ export default function BlogTable({ blogs, onRefresh }) {
     }
   };
 
+  const thStyle = {
+    padding: '0.75rem 1rem',
+    textAlign: 'left',
+    fontSize: '0.75rem',
+    fontWeight: '600',
+    backgroundColor: 'var(--c-bg-alt)',
+    color: 'var(--c-text-muted)',
+    borderBottom: '1px solid color-mix(in srgb, var(--c-primary) 12%, transparent)',
+  };
+
+  const tdStyle = {
+    padding: '0.75rem 1rem',
+    fontSize: '0.875rem',
+    borderBottom: '1px solid color-mix(in srgb, var(--c-primary) 8%, transparent)',
+    color: 'var(--c-text)',
+    backgroundColor: 'var(--c-bg)',
+  };
+
   return (
-    <div className="overflow-x-auto rounded-2xl border border-gray-100 dark:border-gray-800">
+    <div className="overflow-x-auto rounded-2xl border" style={{ borderColor: 'color-mix(in srgb, var(--c-primary) 12%, transparent)' }}>
       <table className="w-full text-sm">
-        <thead className="bg-gray-50 dark:bg-gray-800">
+        <thead>
           <tr>
-            {['Title','Category','Date','Status','Actions'].map(h => (
-              <th key={h} className="px-4 py-3 text-left font-semibold text-gray-600 dark:text-gray-300">{h}</th>
+            {['Title', 'Category', 'Date', 'Status', 'Actions'].map(h => (
+              <th key={h} style={thStyle}>{h}</th>
             ))}
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
+        <tbody>
           {blogs.map(blog => (
-            <tr key={blog._id} className="bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-              <td className="px-4 py-3 font-medium text-gray-800 dark:text-gray-100 max-w-xs truncate">{blog.title}</td>
-              <td className="px-4 py-3 text-gray-500 dark:text-gray-400">{getCategoryLabel(blog.category)}</td>
-              <td className="px-4 py-3 text-gray-500 dark:text-gray-400">{formatDate(blog.createdAt)}</td>
-              <td className="px-4 py-3">
-                <span className={`px-2 py-1 rounded-full text-xs font-medium ${blog.published ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' : 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-400'}`}>
+            <tr key={blog._id} className="transition-colors" style={{ backgroundColor: 'var(--c-bg)' }}
+              onMouseEnter={e => e.currentTarget.style.backgroundColor = 'var(--c-bg-alt)'}
+              onMouseLeave={e => e.currentTarget.style.backgroundColor = 'var(--c-bg)'}>
+              <td style={{ ...tdStyle, maxWidth: '200px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', fontWeight: '500' }}>{blog.title}</td>
+              <td style={{ ...tdStyle, color: 'var(--c-text-muted)' }}>{getCategoryLabel(blog.category)}</td>
+              <td style={{ ...tdStyle, color: 'var(--c-text-muted)' }}>{formatDate(blog.createdAt)}</td>
+              <td style={tdStyle}>
+                <span className="px-2 py-1 rounded-full text-xs font-medium"
+                  style={blog.published
+                    ? { backgroundColor: 'rgba(34,197,94,0.15)', color: '#16a34a' }
+                    : { backgroundColor: 'color-mix(in srgb, var(--c-text-muted) 15%, transparent)', color: 'var(--c-text-muted)' }}>
                   {blog.published ? 'Published' : 'Draft'}
                 </span>
               </td>
-              <td className="px-4 py-3">
+              <td style={tdStyle}>
                 <div className="flex items-center gap-2">
-                  <Link to={`/admin/blogs/edit/${blog._id}`} className="px-3 py-1 bg-forest text-white rounded-lg text-xs hover:bg-forest-light transition-colors">Edit</Link>
-                  <button onClick={() => handleDelete(blog._id, blog.title)} className="px-3 py-1 bg-red-500 text-white rounded-lg text-xs hover:bg-red-600 transition-colors">Delete</button>
+                  <Link to={`/admin/blogs/edit/${blog._id}`}
+                    className="px-3 py-1 rounded-lg text-xs font-semibold text-white transition-opacity hover:opacity-80"
+                    style={{ backgroundColor: 'var(--c-primary)' }}>
+                    Edit
+                  </Link>
+                  <button onClick={() => handleDelete(blog._id, blog.title)}
+                    className="px-3 py-1 rounded-lg text-xs font-semibold text-white bg-red-500 hover:bg-red-600 transition-colors">
+                    Delete
+                  </button>
                 </div>
               </td>
             </tr>

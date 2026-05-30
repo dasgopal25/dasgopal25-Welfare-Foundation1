@@ -8,7 +8,7 @@ export default function BlogList({ blogs, loading }) {
   if (!blogs.length) return (
     <div className="text-center py-16">
       <span className="text-6xl block mb-4">📭</span>
-      <p className="text-gray-500 dark:text-gray-400">{t('No blogs found.','কোনো ব্লগ পাওয়া যায়নি।')}</p>
+      <p style={{ color:'var(--c-text-muted)' }}>{t('No blogs found.','কোনো ব্লগ পাওয়া যায়নি।')}</p>
     </div>
   );
   return (
