@@ -97,8 +97,8 @@ export default function Login() {
 
           <div className="mt-6 p-4 rounded-xl text-xs" style={{ backgroundColor: 'var(--c-bg-alt)', color: 'var(--c-text-muted)' }}>
             <p className="font-medium mb-1">Default credentials:</p>
-            <p>📧 admin@gazipurkismat.org</p>
-            <p>🔑 Admin@123456</p>
+            {/* <p>📧 admin@gazipurkismat.org</p>
+            <p>🔑 Admin@123456</p> */}
           </div>
         </div>
       </div>
