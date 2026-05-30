@@ -3,9 +3,22 @@ const Contact = require('../../models/Contact');
 const submitContact = async (req, res) => {
   try {
     const { name, email, phone, subject, message, type, volunteerRole, address } = req.body;
-    const contact = await Contact.create({ name, email, phone, subject, message, type: type || 'contact', volunteerRole, address });
-    res.status(201).json({ success: true, message: 'Message sent successfully!', data: contact });
+
+    const contact = new Contact({
+      name, email, phone, subject, message,
+      type: type || 'contact',
+      volunteerRole: volunteerRole || 'volunteer',
+      address,
+    });
+
+    await contact.save();
+    res.status(201).json({ success: true, message: 'Message sent successfully!' });
+
   } catch (error) {
+    // Handle our custom duplicate error
+    if (error.statusCode === 409) {
+      return res.status(409).json({ success: false, message: error.message });
+    }
     res.status(500).json({ success: false, message: error.message });
   }
 };
@@ -16,8 +29,11 @@ const getMessages = async (req, res) => {
     const query = {};
     if (type) query.type = type;
     if (isRead !== undefined) query.isRead = isRead === 'true';
-    const total = await Contact.countDocuments(query);
-    const messages = await Contact.find(query).sort({ createdAt: -1 }).skip((page - 1) * limit).limit(Number(limit));
+    const total    = await Contact.countDocuments(query);
+    const messages = await Contact.find(query)
+      .sort({ createdAt: -1 })
+      .skip((page - 1) * limit)
+      .limit(Number(limit));
     res.json({ success: true, data: messages, total, page: Number(page), pages: Math.ceil(total / limit) });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });

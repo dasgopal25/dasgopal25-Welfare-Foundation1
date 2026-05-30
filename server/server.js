@@ -33,7 +33,7 @@ const seedAdmin = async () => {
       { key: 'phone',            value: '+91 9002036590', group: 'contact' },
       { key: 'established_year', value: '2026', group: 'general' },
       { key: 'facebook_url',     value: '#', group: 'social' },
-      { key: 'whatsapp_number',  value: '910000000000', group: 'social' },
+      { key: 'whatsapp_number',  value: '+91 9002036590', group: 'social' },
       // Theme setting — default: forest-green
       { key: 'active_theme',     value: 'forest-green', group: 'theme' },
     ];
